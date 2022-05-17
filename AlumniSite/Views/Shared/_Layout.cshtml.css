@@ -10,18 +10,23 @@ a.navbar-brand {
 a {
   color: #0077cc;
 }
+.navi {
+    color:black;
+    font:bold 14px calibri;
 
+}
+    .navi:hover {
+        background-color: orange;
+    }
+    navi:active {
+        background-color: orange;
+    }
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-.float-left {
-    float:left;
-}
-.float-right {
-    float:right;
-}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
@@ -30,6 +35,7 @@ a {
 
 .dropdown:hover .dropdown-menu {
     display: block;
+    border:none;
 }
 .border-top {
   border-top: 1px solid #e5e5e5;

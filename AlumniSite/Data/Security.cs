@@ -7,57 +7,59 @@ namespace AlumniSite.Data
     {
         private static string BlackList = 
             @"<>/\'{};:`&|";
+        private static string[] BlackListWords = { "DATABASE", "1:1", "TABLE", "TRUNCATE", "", "SELECT" };
+        private static string NumberWhiteList = "0123456789";
 
 
         public static bool GeneralInput(string input)
         {
-            input = input.ToLower();
-            //input = (string)input.Distinct();
-
+            // Null or Empty
+            if(input == null || input == "")
+            { return false; }
+            // Is Clearly Injection
+            input = input.ToUpper();
+            string[] words = input.Split(' ');
+            foreach (string word in words)
+            {
+                if(BlackListWords.Contains(word))
+                { return false; }
+            }
+            // Coding Characters
+            input = (string)input.Distinct();
             if (input.Contains(BlackList))
             { return false; }
+
             return true;
         }
         public static bool EmailInput(string input)
         {
             if (GeneralInput(input))
             {
-                //HttpUtility.HtmlEncode(input); //
-                Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"); //TEST
+                //HttpUtility.HtmlEncode(input); // 
+                Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
                 Match match = regex.Match(input);
                 if (!match.Success)
                 { return false; }
                 return true;
             }
             return false;
+        } 
+        public static bool NumericalInput(string input)
+        {
+            if (GeneralInput(input))
+            {
+
+            }
+            return false;
         }
-        //don't actually know of a reason for this line, since there will be alumni pass and admin pass checked in browser. I guess we could double check since why not
-        //public static bool PasswordInput(string input)
-        //{
-        //    if (GeneralInput(input))
-        //    {
-        //        if (!)
-        //        {
+        public static bool PhoneInput(string input)
+        {
+            if (GeneralInput(input))
+            {
 
-        //        }
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
-        // not implemented
-        //public static bool SearchInput(string input)
-        //{
-        //    if (GeneralInput(input))
-        //    {
-        //        if(!)
-        //        {
-
-        //        }
-        //        return true;
-        //    }
-        //    return false;
-        //}
+            }
+            return false;
+        }
         
     }
 }

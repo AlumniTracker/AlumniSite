@@ -3,7 +3,7 @@ using static AlumniSite.Data.Security;
 namespace UnitTest
 {
     [TestClass]
-    public class SecurityUnitTests
+    public class UnitTests
     {
         [TestMethod]
         public void TestSecurity_MaliciousInput()
@@ -49,5 +49,10 @@ namespace UnitTest
                 Assert.IsTrue(EmailInput(GoodEmail));
             }
         }
-    }
+        [TestMethod]
+        public void Test()
+        {
+
+        }
+        }
 }
